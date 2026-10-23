@@ -259,9 +259,19 @@ export const NirbharBuddyRobot: React.FC<NirbharBuddyRobotProps> = ({
       });
 
       clearTimeout(timeoutId);
-      if (response.ok) {
-        replyData = await response.json();
-      }
+      
+if (response.ok) {
+  const data = await response.json();
+
+  if (typeof data.reply === 'string' && data.reply.trim()) {
+    replyData = {
+      replyText: data.reply,
+      steps: [],
+      safetyTip: '',
+    };
+  }
+}
+
     } catch {
       // Fallback handled below
     }
