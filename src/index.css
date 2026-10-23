@@ -1,0 +1,194 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    background-color: #fbfbf8;
+    color: #1c1917;
+  }
+}
+
+/* Accessibility Modes */
+.text-scale-normal {
+  font-size: 100%;
+}
+
+.text-scale-large {
+  font-size: 115%;
+}
+
+.text-scale-xl {
+  font-size: 130%;
+}
+
+.high-contrast-mode {
+  --tw-bg-opacity: 1;
+  filter: contrast(120%);
+}
+
+.high-contrast-mode button,
+.high-contrast-mode a,
+.high-contrast-mode input,
+.high-contrast-mode select {
+  outline: 2px solid #047857;
+  outline-offset: 2px;
+}
+
+/* Senior-Friendly Touch targets minimum 48px */
+.touch-target-senior {
+  min-height: 48px;
+  min-width: 48px;
+}
+
+/* Speaking Pulse and Equalizer Keyframes */
+@keyframes wave-bounce-1 {
+  0%, 100% { height: 28%; }
+  50% { height: 100%; }
+}
+
+@keyframes wave-bounce-2 {
+  0%, 100% { height: 75%; }
+  50% { height: 25%; }
+}
+
+@keyframes wave-bounce-3 {
+  0%, 100% { height: 35%; }
+  50% { height: 95%; }
+}
+
+@keyframes wave-bounce-4 {
+  0%, 100% { height: 90%; }
+  50% { height: 30%; }
+}
+
+@keyframes speak-halo {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+    transform: scale(1.05);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    transform: scale(1);
+  }
+}
+
+.animate-wave-1 {
+  animation: wave-bounce-1 0.75s ease-in-out infinite;
+}
+
+.animate-wave-2 {
+  animation: wave-bounce-2 0.65s ease-in-out infinite;
+}
+
+.animate-wave-3 {
+  animation: wave-bounce-3 0.85s ease-in-out infinite;
+}
+
+.animate-wave-4 {
+  animation: wave-bounce-4 0.7s ease-in-out infinite;
+}
+
+.animate-speaking-halo {
+  animation: speak-halo 1.6s ease-in-out infinite;
+}
+
+/* Nirbhar Buddy 3D Floating Robot Animations */
+@keyframes buddy-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-9px) rotate(1.5deg);
+  }
+}
+
+@keyframes buddy-shadow-scale {
+  0%, 100% {
+    transform: scaleX(1) scaleY(1);
+    opacity: 0.35;
+  }
+  50% {
+    transform: scaleX(0.78) scaleY(0.8);
+    opacity: 0.18;
+  }
+}
+
+@keyframes buddy-blink {
+  0%, 44%, 48%, 92%, 96%, 100% {
+    transform: scaleY(1);
+  }
+  46%, 94% {
+    transform: scaleY(0.08);
+  }
+}
+
+@keyframes buddy-antenna-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 4px rgba(56, 189, 248, 0.8));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 12px rgba(168, 85, 247, 1));
+    transform: scale(1.12);
+  }
+}
+
+@keyframes buddy-sonar-ring {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(1.65);
+    opacity: 0;
+  }
+}
+
+.animate-buddy-float {
+  animation: buddy-float 3.4s ease-in-out infinite;
+}
+
+.animate-buddy-shadow {
+  animation: buddy-shadow-scale 3.4s ease-in-out infinite;
+}
+
+.animate-buddy-blink {
+  transform-origin: center;
+  animation: buddy-blink 5.5s ease-in-out infinite;
+}
+
+.animate-buddy-antenna {
+  transform-origin: center;
+  animation: buddy-antenna-glow 2.2s ease-in-out infinite;
+}
+
+.animate-sonar-1 {
+  animation: buddy-sonar-ring 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.animate-sonar-2 {
+  animation: buddy-sonar-ring 1.8s cubic-bezier(0, 0, 0.2, 1) 0.6s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-buddy-float,
+  .animate-buddy-shadow,
+  .animate-buddy-blink,
+  .animate-buddy-antenna,
+  .animate-sonar-1,
+  .animate-sonar-2 {
+    animation: none !important;
+  }
+}
+

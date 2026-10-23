@@ -1,0 +1,9 @@
+{
+  "name": "NIRBHAR",
+  "description": "NIRBHAR — Learn Digital. Live Independent. Accessible, multilingual digital literacy companion with Rishi AI voice assistant, screenshot helper, scam detector, and safe UPI payment simulator.",
+  "requestFramePermissions": [
+    "microphone",
+    "camera"
+  ],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

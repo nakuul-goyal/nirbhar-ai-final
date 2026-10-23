@@ -1,0 +1,70 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User profile with language preferences, skill level, and digital literacy learning progress.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Firebase Auth UID of the user.",
+          "maxLength": 128
+        },
+        "email": {
+          "type": "string",
+          "description": "Email address of the user.",
+          "maxLength": 256
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Display name of the user.",
+          "maxLength": 100
+        },
+        "photoURL": {
+          "type": "string",
+          "description": "User avatar URL.",
+          "maxLength": 512
+        },
+        "language": {
+          "type": "string",
+          "enum": ["en", "hi", "mr"],
+          "description": "Preferred interface and voice assistance language."
+        },
+        "level": {
+          "type": "string",
+          "enum": ["beginner", "standard", "pro"],
+          "description": "User digital proficiency level."
+        },
+        "completedTips": {
+          "type": "array",
+          "description": "List of completed daily literacy tip IDs."
+        },
+        "struggles": {
+          "type": "array",
+          "description": "Areas or topics flagged for review and reinforcement."
+        },
+        "points": {
+          "type": "number",
+          "description": "Total learning and practice experience points."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Account profile creation timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last profile update timestamp."
+        }
+      },
+      "required": ["uid", "language", "level"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Stores individual user profile, settings, and learning progress."
+    }
+  }
+}
