@@ -263,11 +263,19 @@ export const NirbharBuddyRobot: React.FC<NirbharBuddyRobotProps> = ({
 if (response.ok) {
   const data = await response.json();
 
-  if (typeof data.reply === 'string' && data.reply.trim()) {
+  const aiReply =
+    typeof data.replyText === 'string' && data.replyText.trim()
+      ? data.replyText
+      : typeof data.reply === 'string' && data.reply.trim()
+        ? data.reply
+        : null;
+
+  if (aiReply) {
     replyData = {
-      replyText: data.reply,
-      steps: [],
-      safetyTip: '',
+      replyText: aiReply,
+      steps: Array.isArray(data.steps) ? data.steps : [],
+      safetyTip:
+        typeof data.safetyTip === 'string' ? data.safetyTip : '',
     };
   }
 }

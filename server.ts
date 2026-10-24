@@ -39,7 +39,7 @@ let isPythonBackendAvailable = false;
 export function startPythonBackend() {
   try {
     console.log(`[Python] Starting FastAPI backend on port ${PYTHON_PORT}...`);
-    pythonProcess = spawn('python3', ['-m', 'uvicorn', 'backend.main:app', '--port', String(PYTHON_PORT), '--host', '127.0.0.1'], {
+    pythonProcess = spawn(process.platform === 'win32' ? '.venv\\Scripts\\python.exe' : 'python3', ['-m', 'uvicorn', 'backend.main:app', '--port', String(PYTHON_PORT), '--host', '127.0.0.1'], {
       stdio: ['ignore', 'pipe', 'pipe'],
       env: { ...process.env, PYTHONUNBUFFERED: '1' }
     });
